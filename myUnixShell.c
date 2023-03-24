@@ -20,13 +20,24 @@ int readline_to_command(char* command) {
     char input[MAX_LINE + 1];
     fgets(input, MAX_LINE + 1, stdin);
 
-    if (input[0] == '\0' || input[0] == '\n') { // null input
+    // check if input is empty or contains only spces
+    size_t input_len = strspn(input, " \t\n\v\f\r");
+    if (input_len == strlen(input)) { // null input or only spaces
+        printf("Please enter your command or 'exit' to terminate\n");
         return 0;
     }
 
-    input[strcspn(input, "\n")] = '\0'; // assume there is only one newline at the end of the input line
+    // remove trailing newline character
+    if (input[strlen(input) - 1] == '\n') {
+        input[strlen(input) - 1] = '\0';
+    }
+
     if (strcmp(input, "!!") == 0) {
-        // if user would like to use the previous command, leave it unchanged
+        // check if there is previous command
+        if (strlen(command) == 0) {
+            printf("No commands in history.\n");;
+            return 0;
+        }
         printf("%s\n", command);
         return 1; 
     }
@@ -105,7 +116,6 @@ int main(void) {
         // read user input line into command and parse it into arguments
         // readline_to_command(command);
         if (!readline_to_command(command)) {
-            printf("Please enter your command or 'exit' to terminate\n");
             continue;
         }
         refresh_args(args);
