@@ -22,7 +22,7 @@ gcc -o myUnixShell myUnixShell.c
 4. Run the program:
 
 ```bash
-./shell
+./myUnixShell
 ```
 
 5. The shell will start running, and you can enter commands:
