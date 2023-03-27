@@ -41,8 +41,8 @@ The Unix shell supports the following commands:
 
 ## Test the code
 ```
-(base) tu@tuyubaodeMacBook-Air project_2_final % gcc -o myUnixShell myUnixShell.c
-(base) tu@tuyubaodeMacBook-Air project_2_final % ./myUnixShell                   
+(base) tu@tuyubaodeMacBook-Air UnixShell % gcc -o myUnixShell myUnixShell.c
+(base) tu@tuyubaodeMacBook-Air UnixShell % ./myUnixShell                   
 osh>ls
 README.rd       myUnixShell     myUnixShell.c
 osh>!!
